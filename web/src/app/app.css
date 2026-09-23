@@ -1,0 +1,257 @@
+.container-painel {
+  padding: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cor-borda-cartao);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.bloco-titulo {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitulo {
+  font-size: 0.8rem;
+  color: var(--cor-texto-opaco);
+  margin: 4px 0 0 0;
+}
+
+.navegacao-principal {
+  display: flex;
+  gap: 2rem;
+}
+
+.navegacao-principal a {
+  color: var(--cor-texto-opaco);
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.navegacao-principal a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--cor-primaria);
+  box-shadow: 0 0 10px var(--cor-primaria);
+  transition: width 0.3s;
+}
+
+.navegacao-principal a:hover {
+  color: var(--cor-texto-principal);
+}
+
+.navegacao-principal a.ativa {
+  color: var(--cor-primaria);
+}
+
+.navegacao-principal a.ativa::after {
+  width: 100%;
+}
+
+.controles-topo {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.botao-info {
+  background: transparent;
+  border: none;
+  color: var(--cor-primaria);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.botao-info:hover {
+  background: rgba(80, 200, 120, 0.1);
+  transform: scale(1.1);
+}
+
+.interruptor-mesclar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.etiqueta-pequena {
+  font-size: 0.6rem;
+  color: var(--cor-texto-opaco);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--cor-primaria);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 22px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.indicador-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--cor-texto-opaco);
+  background: var(--cor-superficie);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--cor-borda-cartao);
+}
+
+.ponto-status {
+  width: 8px;
+  height: 8px;
+  background-color: var(--cor-primaria);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cor-primaria);
+  animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.conteudo-principal {
+  padding: 2rem;
+  flex: 1;
+}
+
+.visao-geral-mesclada {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.divisor-secao {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--cor-texto-opaco);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.divisor-secao hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid var(--cor-borda-cartao);
+}
+
+.rodape-informativo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 2rem;
+  color: #333;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.rodape-informativo .material-icons {
+  font-size: 1.2rem;
+}
+
+.rodape-informativo p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cabecalho-principal {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  .controles-topo {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .navegacao-principal {
+    gap: 1rem;
+  }
+}

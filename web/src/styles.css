@@ -1,0 +1,55 @@
+:root {
+  --cor-primaria: #50C878;
+  --brilho-primario: rgba(80, 200, 120, 0.3);
+  --cor-fundo-escuro: #0a0a0c;
+  --cor-fundo-cartao: #141417;
+  --cor-borda-cartao: #222226;
+  --cor-texto-principal: #f0f0f2;
+  --cor-texto-opaco: #555555;
+  --cor-perigo: #ff4757;
+  --cor-perigo-brilho: rgba(255, 71, 87, 0.3);
+  --cor-aviso: #ffa502;
+  --cor-info: #00a8ff;
+  --cor-superficie: #1c1c21;
+  --fonte-principal: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo-escuro);
+  color: var(--cor-texto-principal);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(0, 255, 136, 0.02) 0%, transparent 30%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cor-fundo-escuro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+.gradiente-texto {
+  background: linear-gradient(135deg, #fff 0%, var(--cor-primaria) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

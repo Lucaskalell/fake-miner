@@ -1,0 +1,66 @@
+<main class="container-painel">
+  <header class="cabecalho-principal">
+    <div class="bloco-titulo">
+      <h1 class="gradiente-texto">{{ titulo }}</h1>
+      <p class="subtitulo">{{ modoMesclado() ? 'Visão Geral — Tudo em um só lugar' : 'Monitoramento em tempo real' }}</p>
+    </div>
+
+    @if (!modoMesclado()) {
+      <nav class="navegacao-principal">
+        <a routerLink="/painel" routerLinkActive="ativa">Painel</a>
+        <a routerLink="/alertas" routerLinkActive="ativa">Alertas</a>
+      </nav>
+    }
+
+    <div class="controles-topo">
+      <button class="botao-info" (click)="alternarLegenda()">
+        <span class="material-icons">info_outline</span>
+      </button>
+      <div class="interruptor-mesclar">
+        <span class="etiqueta-pequena">MESCLAR</span>
+        <label class="switch">
+          <input type="checkbox" [checked]="modoMesclado()" (change)="alternarModo()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="indicador-status">
+        <span class="ponto-status"></span> <span>Monitor Ativo</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="conteudo-principal">
+    @if (modoMesclado()) {
+      <div class="visao-geral-mesclada">
+        <app-painel-metricas [exibirApenasDashboard]="true"></app-painel-metricas>
+        
+        <div class="divisor-secao">
+          <hr>
+          <span>CONTROLE DO MINERADOR</span>
+        </div>
+        <app-painel-metricas [exibirApenasControle]="true"></app-painel-metricas>
+        
+        <div class="divisor-secao">
+          <hr>
+          <span>ALERTAS RECENTES</span>
+        </div>
+        <app-historico-alertas [limite]="3" [exibirTitulo]="false"></app-historico-alertas>
+        
+        <div class="rodape-informativo">
+          <span class="material-icons">info</span>
+          <p>Métricas de hardware reais coletadas via OSHI. Mineração 100% simulada.</p>
+        </div>
+      </div>
+    } @else {
+      <router-outlet />
+    }
+  </section>
+
+  @if (exibirLegenda()) {
+    <app-modal-legenda 
+      [titulo]="tituloLegenda()" 
+      [secoes]="secoesLegenda()" 
+      (fechar)="alternarLegenda()">
+    </app-modal-legenda>
+  }
+</main>
